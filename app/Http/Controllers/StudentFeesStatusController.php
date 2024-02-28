@@ -32,7 +32,6 @@ class StudentFeesStatusController extends Controller{
             'balance'                   => 'required|integer|gt:0',
             'paid_date'                 => 'required',
             'next_installment_due_date' => 'required',
-            'status'                    => 'required|in:1,0',
         ]);
         StudentFeesStatus::create($request->all());
         return redirect()->route('student.fee.create')->banner('Student Fees Added.');
@@ -56,7 +55,6 @@ class StudentFeesStatusController extends Controller{
             'balance'                   => 'required|integer|gt:0',
             'paid_date'                 => 'required',
             'next_installment_due_date' => 'required',
-            'status'                    => 'required|in:1,0',
         ]);
 
         StudentFeesStatus::findOrFail($ID)->update($request->all());

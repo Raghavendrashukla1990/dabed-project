@@ -11,20 +11,19 @@ const props = defineProps({
 const tableHeader = {
     'name'   : 'Course Name',
     'price'  : 'Course Price',   
-    'status' : 'Course Status',
 };
 </script>
 
 <template>
-    <AppLayout title="Course Index">
+    <AppLayout title="Course">
         <template #header>
             <div class="flow-root">
                 <div class="float-left">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                         <Link :href="route('courses.index')" class="text-gray-600 hover:text-gray-900">
-                            Course
+                            Course /
                         </Link>
-                        / Index
+                        List
                     </h2>
                 </div>
                 <div class="float-right">

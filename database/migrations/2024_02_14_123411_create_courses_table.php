@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
-            $table->enum('status', ['1', '0'])->default(0) ;
             $table->timestamps();
         });
     }

@@ -41,7 +41,6 @@ const form = useForm({
 	installment	: typeof props.student_fee === 'undefined' ? '0' 				: props.student_fee.installment,
 	paid		: typeof props.student_fee === 'undefined' ? '0' 				: props.student_fee.paid,
 	balance		: typeof props.student_fee === 'undefined' ? '0'				: props.student_fee.balance,
-	status		: typeof props.student_fee === 'undefined' ? '1' 				: props.student_fee.status,
 	paid_date	: typeof props.student_fee === 'undefined' ?  paidMinDueDate 	: props.student_fee.paid_date,
 	next_installment_due_date	: typeof props.student_fee === 'undefined' ?  nextMinDueDate 	: props.student_fee.next_installment_due_date,
 });
@@ -58,14 +57,17 @@ const getCourse = (student_id) =>{
 }
 
 const paidValue = (val) => {
+	let getBalance = 0;
 	val = Number(val);
 	if(balance > 0){
 		if(val > 0 && val != ''){
-			form.balance = Number(form.balance) - val;
+			getBalance = Number(balance) - val;
 		}else{
-			form.balance = balance;
+			getBalance = balance;
 		}
 	}
+
+	form.balance = getBalance;
 }
 
 const submit = () => {
@@ -81,13 +83,13 @@ const submit = () => {
 };
 </script>
 <template>
-    <AppLayout title="Course Fee Create">
+    <AppLayout title="Student Fees Status">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 <Link :href="route('student.fee.index')" class="text-gray-600 hover:text-gray-900">
-                    Course / Fee
+                    Student / Fee /
                 </Link>
-                {{ typeof props.student_fee === 'undefined' ? '/ Create' : '/ Edit' }}
+                {{ typeof props.student_fee === 'undefined' ? 'Add' : 'Update' }}
             </h2>
         </template>
 
@@ -176,19 +178,11 @@ const submit = () => {
 				                <InputError class="mt-2" :message="form.errors.next_installment_due_date" />
 				            </div>
 
-				            <div class="mb-4 px-3 w-full">
-				            	<InputLabel for="status" value="Status" />
-				                <select id="status" v-model="form.status" class="block border border-gray-300 p-2.5 rounded-lg text-sm w-full">
-								    <option value="1">Active</option>
-								    <option value="0">Inactive</option>
-								</select>
-				                <InputError class="mt-2" :message="form.errors.status" />
-				            </div>
 				        </div>
 
             			<div class="flex items-center justify-end mt-4">
                 			<PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    			{{ typeof props.student_fee === 'undefined' ? 'Submit' : 'Update' }}
+                    			{{ typeof props.student_fee === 'undefined' ? 'Add' : 'Update' }}
                 			</PrimaryButton>
             			</div>
         			</form>

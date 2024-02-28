@@ -14,7 +14,6 @@ const props = defineProps({
 const form = useForm({
 	name: typeof props.course === 'undefined' ? '' : props.course.name ,
 	price: typeof props.course === 'undefined' ? '0' : props.course.price ,
-	status: typeof props.course === 'undefined' ? '1' : props.course.status,
 });
 
 const submit = () => {
@@ -31,13 +30,13 @@ const submit = () => {
 </script>
 
 <template>
-    <AppLayout title="Course Create">
+    <AppLayout title="Course">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 <Link :href="route('courses.index')" class="text-gray-600 hover:text-gray-900">
-                    Course
+                    Course /
                 </Link>
-                {{ typeof props.course === 'undefined' ? '/ Create' : '/ Edit' }}
+                {{ typeof props.course === 'undefined' ? 'Add' : 'Update' }}
             </h2>
         </template>
 
@@ -68,19 +67,11 @@ const submit = () => {
 				                <InputError class="mt-2" :message="form.errors.price" />
 				            </div>
 
-				            <div class="mb-4 px-3 w-full">
-				            	<InputLabel for="status" value="Course Status" />
-				                <select id="status" v-model="form.status" class="block border border-gray-300 p-2.5 rounded-lg text-sm w-full">
-								    <option value="1">Active</option>
-								    <option value="0">Inactive</option>
-								</select>
-				                <InputError class="mt-2" :message="form.errors.status" />
-				            </div>
 				        </div>
 
             			<div class="flex items-center justify-end mt-4">
                 			<PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    			{{ typeof props.course === 'undefined' ? 'Submit' : 'Update' }}
+                    			{{ typeof props.course === 'undefined' ? 'Add' : 'Update' }}
                 			</PrimaryButton>
             			</div>
         			</form>

@@ -13,6 +13,15 @@ const props = defineProps({
     course : Object,
 });
 
+const today 	= new Date();
+let mm 			= today.getMonth();
+let dd 			= today.getDate();
+
+if (dd < 10)  dd  = '0' + dd;
+if (mm < 10)  mm  = '0' + mm;
+
+const minDate	= today.getFullYear() + "-" + mm +"-"+ dd;
+
 const form = useForm({
 	name 		: typeof props.student === 'undefined' ? '' : props.student.name ,
 	email 		: typeof props.student === 'undefined' ? '' : props.student.email ,
@@ -45,13 +54,13 @@ const submit = () => {
 </script>
 
 <template>
-    <AppLayout title="Student Register">
+    <AppLayout title="Student Registration">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 <Link :href="route('student.index')" class="text-gray-600 hover:text-gray-900">
-                    Student
+                    Student / Registration /
                 </Link>
-                {{ typeof props.student === 'undefined' ? '/ Add' : '/ Update' }}
+                {{ typeof props.student === 'undefined' ? 'Add' : 'Update' }}
             </h2>
         </template>
 
@@ -100,6 +109,7 @@ const submit = () => {
 				                    id="dob"
 				                    v-model="form.dob"
 				                    type="date"
+				                    :max="minDate"
 				                    class="mt-1 block w-full"
 				                />
 				                <InputError class="mt-2" :message="form.errors.dob" />

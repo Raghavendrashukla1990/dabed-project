@@ -16,20 +16,19 @@ const tableHeader = {
     'balance'       : 'Balance',
     'paid_date'     : 'Paid Date',
     'next_installment_due_date' : 'Next Installment Due Date',
-    'status'        : 'Status',
 };
 </script>
 
 <template>
-    <AppLayout title="Student Fee Index">
+    <AppLayout title="Student Fees Status">
         <template #header>
             <div class="flow-root">
                 <div class="float-left">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                         <Link :href="route('student.fee.index')" class="text-gray-600 hover:text-gray-900">
-                            Student / Fee
+                            Student / Fee /
                         </Link>
-                        / Index
+                        List
                     </h2>
                 </div>
                 <div class="float-right">

@@ -45,9 +45,9 @@ const submit = () => {
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 <Link :href="route('scored.record.index')" class="text-gray-600 hover:text-gray-900">
-                    Student Scored Marks
+                    Student / Scored Marks /
                 </Link>
-                {{ typeof props.score_record === 'undefined' ? '/ Add' : '/ Update' }}
+                {{ typeof props.score_record === 'undefined' ? 'Add' : 'Update' }}
             </h2>
         </template>
 

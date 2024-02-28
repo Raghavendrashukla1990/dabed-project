@@ -12,11 +12,8 @@ class StudentRegistrationController extends Controller{
     public function index(Request $request){
         $student = new StudentRegistration();
         if($request->has('orderBy') && $request->has('order')){
-            if($request->order == 'asc'){
-                $student = $student->orderBy($request->orderBy,'ASC');
-            }else{
-                $student = $student->orderBy($request->orderBy,'DESC');
-            }
+            $request->orderBy = $request->orderBy == 'course' ? 'course_id' : $request->orderBy;
+            $student = $request->order == 'asc' ? $student->orderBy($request->orderBy,'ASC') : $student->orderBy($request->orderBy,'DESC');
         }
 
         if($request->has('search')){
@@ -34,7 +31,7 @@ class StudentRegistrationController extends Controller{
     }
 
     public function create(){
-        $course     = Course::where('status','1')->get();
+        $course     = Course::all();
         return Inertia::render('Student/Form',[
             'course' => $course,
         ]);
@@ -65,9 +62,8 @@ class StudentRegistrationController extends Controller{
         return redirect()->route('student.create')->banner('New Student Register Successfully.');
     }
 
-    
     public function edit($ID){
-        $course  = Course::where('status','1')->get();
+        $course  = Course::all();
         $student = StudentRegistration::where('id',$ID)->first();
         if($student){
             return Inertia::render('Student/Form',[

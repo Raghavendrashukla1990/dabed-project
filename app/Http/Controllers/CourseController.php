@@ -21,7 +21,6 @@ class CourseController extends Controller{
         $request->validate([
             'name'      => 'required|max:255',
             'price'     => 'required|integer|gt:0',
-            'status'    => 'required|in:1,0',
         ]);
         Course::create($request->all());
         return redirect()->route('courses.create')->banner('New Course Has Been Enrolled.');
@@ -42,7 +41,6 @@ class CourseController extends Controller{
         $request->validate([
             'name'    => 'required|max:255',
             'price'   => 'required|integer|gt:0',
-            'status'  => 'required|in:1,0',
         ]);
 
         $course = Course::findOrFail($ID);

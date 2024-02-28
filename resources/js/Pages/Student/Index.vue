@@ -20,21 +20,21 @@ const tableHeader = {
 </script>
 
 <template>
-    <AppLayout title="Student Registration Details Index">
+    <AppLayout title="Student Registration">
         <template #header>
             <div class="flow-root">
                 <div class="float-left">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                         <Link :href="route('student.index')" class="text-gray-600 hover:text-gray-900">
-                            Student Registration
+                            Student / Registration /
                         </Link>
-                        / Index
+                        List
                     </h2>
                 </div>
                 <div class="float-right">
                     <SecondaryButton>
                         <Link :href="route('student.create')" class="text-gray-600 hover:text-gray-900">
-                            Add New Registration
+                            Add New Student Registration
                         </Link>
                     </SecondaryButton>
                 </div>

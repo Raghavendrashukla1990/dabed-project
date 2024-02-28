@@ -64,6 +64,24 @@ const logout = () => {
                                     Student
                                 </NavLink>
                             </div>
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('student.fee.index')" :active="route().current('student.fee')">
+                                    Student Fees
+                                </NavLink>
+                            </div>
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('scored.record.index')" :active="route().current('scored.record')">
+                                    Scored
+                                </NavLink>
+                            </div>
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('gate.pass.index')" :active="route().current('gate.pass')">
+                                    Gate Pass
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">

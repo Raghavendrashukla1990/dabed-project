@@ -20,15 +20,15 @@ const tableHeader = {
 </script>
 
 <template>
-    <AppLayout title="Student Gate Pass Details">
+    <AppLayout title="Student Gate Pass">
         <template #header>
             <div class="flow-root">
                 <div class="float-left">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                         <Link :href="route('gate.pass.index')" class="text-gray-600 hover:text-gray-900">
-                            Student Gate Pass
+                            Student / Gate Pass /
                         </Link>
-                        / Index
+                        List
                     </h2>
                 </div>
                 <div class="float-right">
@@ -48,7 +48,6 @@ const tableHeader = {
                         :theaders="tableHeader" 
                         forEditPath="gate.pass.edit" 
                         forDeletePath="gate.pass.delete"
-                        forIndexPath="gate.pass.index"
                     />
                 </div>
             </div>

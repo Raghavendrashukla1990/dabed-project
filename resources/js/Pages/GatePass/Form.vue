@@ -47,9 +47,9 @@ const submit = () => {
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 <Link :href="route('gate.pass.index')" class="text-gray-600 hover:text-gray-900">
-                    Student Gate Pass
+                    Student / Gate Pass /
                 </Link>
-                {{ typeof props.gate_pass === 'undefined' ? '/ Add' : '/ Update' }}
+                {{ typeof props.gate_pass === 'undefined' ? 'Add' : 'Update' }}
             </h2>
         </template>
 

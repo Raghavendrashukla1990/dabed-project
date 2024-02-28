@@ -18,15 +18,15 @@ const tableHeader = {
 </script>
 
 <template>
-    <AppLayout title="Student Scored Marks Details">
+    <AppLayout title="Student Scored Marks">
         <template #header>
             <div class="flow-root">
                 <div class="float-left">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                         <Link :href="route('scored.record.index')" class="text-gray-600 hover:text-gray-900">
-                            Student Scored Marks
+                            Student / Scored Marks /
                         </Link>
-                        / Index
+                        List
                     </h2>
                 </div>
                 <div class="float-right">
@@ -46,7 +46,6 @@ const tableHeader = {
                         :theaders="tableHeader" 
                         forEditPath="scored.record.edit" 
                         forDeletePath="scored.record.delete"
-                        forIndexPath="scored.record.index"
                     />
                 </div>
             </div>

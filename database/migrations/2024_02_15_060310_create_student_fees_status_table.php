@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('balance');
             $table->string('paid_date');
             $table->string('next_installment_due_date');
-            $table->enum('status',[1,0])->default(0);
             $table->timestamps();
         });
     }
