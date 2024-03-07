@@ -21,7 +21,10 @@ class StudentRegistrationController extends Controller{
             ->orWhere('email','LIKE','%'.$request->search.'%')
             ->orWhere('school','LIKE','%'.$request->search.'%')
             ->orWhere('father_name','LIKE','%'.$request->search.'%')
-            ->orWhere('phone_number','LIKE','%'.$request->search.'%');
+            ->orWhere('phone_number','LIKE','%'.$request->search.'%')
+            ->orWhereHas('course',function ($query) use ($request) {
+                $query->where('name','LIKE','%'.$request->search.'%');
+            });
         }
 
         $student = $student->with('course:id,name')->paginate(10);

@@ -1,4 +1,5 @@
 <script setup>
+import Multiselect from '@vueform/multiselect';
 const props = defineProps({
 	items : {
 		type: Object,
@@ -15,8 +16,11 @@ const props = defineProps({
 });
 </script>
 <template>
-	<select class="block border border-gray-300 p-2.5 rounded-lg text-sm w-full" @change="$emit('update:modelValue', $event.target.value)">
-		<option value="" selected>Select</option>
-	    <option v-for="(item, key ,index) in items" :key="index" :value="key" :selected="key == value">{{item}}</option>
-	</select>
+	<Multiselect 
+		:searchable="true"
+		:options="studentList" 
+		@change="$emit('update:modelValue', $event.target.value)"
+	/>
+	
 </template>
+<style src="@vueform/multiselect/themes/default.css"></style>

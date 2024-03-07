@@ -7,6 +7,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import Select from '@/Components/SelectDropDown.vue';
+import Multiselect from '@vueform/multiselect'
+
 
 const props = defineProps({
     score_record: Object,
@@ -59,11 +61,10 @@ const submit = () => {
 
 				        	<div class="mb-4 px-3 w-full">
 				            	<InputLabel for="student_id" value="Select Student" />
-				                <Select 
-				                	:items="studentList" 
-				                	:value="form.student_id"
+				                <Multiselect 
+				                	:searchable="true"
+				                	:options="studentList" 
 				                	v-model="form.student_id"
-				                	id="student_id"
 				                />
 				                <InputError class="mt-2" :message="form.errors.student_id" />
 				            </div>
@@ -125,3 +126,4 @@ const submit = () => {
         </div>
     </AppLayout>
 </template>
+<style src="@vueform/multiselect/themes/default.css"></style>
